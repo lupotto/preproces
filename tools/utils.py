@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import operator
 import cv2
 import sys
+import os
+from sklearn.model_selection import train_test_split
 
 def load_classes(classes_path):
 
@@ -148,3 +150,90 @@ def convert_yolo_sizes(image_size, bbox_xml):
     h = h * dh
 
     return (x, y, w, h)
+
+
+
+def convert_yolo_coordinates_to_voc(x_c_n, y_c_n, width_n, height_n, img_width, img_height):
+    ## remove normalization given the size of the image
+    x_c = float(x_c_n) * img_width
+    y_c = float(y_c_n) * img_height
+    width = float(width_n) * img_width
+    height = float(height_n) * img_height
+
+    ## compute half width and half height
+    half_width = width / 2
+    half_height = height / 2
+
+    ## compute left, top, right, bottom
+    ## in the official VOC challenge the top-left pixel in the image has coordinates (1;1)
+    left = int(x_c - half_width) + 1
+    top = int(y_c - half_height) + 1
+    right = int(x_c + half_width) + 1
+    bottom = int(y_c + half_height) + 1
+
+    return left, top, right, bottom
+
+def convert_yolo_to_voc_gt(labels_origin, label_dest, file_paths, class_path):
+
+    #read images
+    with open(file_paths) as file:
+        img_files = file.readlines()
+    #read labels
+    label_files = [os.path.join(labels_origin, path.split('/')[-1].replace('.jpg', '.txt').rstrip('\n'))
+                        for path in img_files]
+    #read classes
+    classes_list = load_classes(class_path)
+
+    for num, img_path in enumerate(img_files):
+
+
+        img = cv2.imread(img_path.strip('\n'))
+        img_h, img_w = img.shape[:2]
+
+
+
+        for label in label_files:
+            label_name = label.split('/')[-1]
+           # new_file = open('{}{}'.format(label_dest,label_name),'w')
+
+            with open(label) as f_label:
+                content = f_label.readlines()
+
+            # remove whitespace characters like `\n` at the end of each line
+            content = [x.strip() for x in content]
+
+            for line in content:
+                ## split a line by spaces.
+                ## "c" stands for center and "n" stands for normalized
+                obj_id, x_c_n, y_c_n, width_n, height_n = line.split()
+                obj_name = classes_list[int(obj_id)]
+
+                left, top, right, bottom = convert_yolo_coordinates_to_voc(x_c_n, y_c_n, width_n, height_n, img_h,
+                                                                           img_w)
+                ## add new line to file
+                # print(obj_name + " " + str(left) + " " + str(top) + " " + str(right) + " " + str(bottom))
+                print(left,top,right,bottom)
+                print_bboxes((left,top,right,bottom), obj_name, img_path.strip('\n'))
+                #new_file.write(obj_name + " " + str(left) + " " + str(top) + " " + str(right) + " " + str(bottom) + '\n')
+
+
+def train_test(total_file , label_path):
+
+
+    train_autel = open(os.path.dirname(total_file.rstrip('/')) + "/train_autel.txt", 'w')
+    test_autel = open(os.path.dirname(total_file.rstrip('/')) + "/test_autel.txt", 'w')
+
+    with open(total_file, 'r') as file:
+          img_files = file.readlines()
+
+    label_files = [os.path.join(label_path, path.split('/')[-1].replace('.jpg', '.txt').rstrip('\n'))
+                        for path in img_files]
+
+
+    X_train, X_test, _, _ = train_test_split(img_files, label_files, test_size=0.1, random_state=42)
+
+    for path in X_train:
+        train_autel.write(path)
+
+    for path in X_test:
+        test_autel.write(path)
