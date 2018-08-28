@@ -3,6 +3,7 @@ import operator
 import cv2
 import sys
 import os
+import pickle
 from sklearn.model_selection import train_test_split
 
 def load_classes(classes_path):
@@ -217,6 +218,7 @@ def convert_yolo_to_voc_gt(labels_origin, label_dest, file_paths, class_path):
                 #new_file.write(obj_name + " " + str(left) + " " + str(top) + " " + str(right) + " " + str(bottom) + '\n')
 
 
+
 def train_test(total_file , label_path):
 
 
@@ -237,3 +239,25 @@ def train_test(total_file , label_path):
 
     for path in X_test:
         test_autel.write(path)
+
+def count_classes(list_labels, classes):
+
+    dict_classes = {}
+
+    for label in list_labels:
+        #open label file
+        with open(label, 'r') as lbl_file:
+            lines = lbl_file.readlines()
+
+        id_classes = [int(line.split(' ')[0]) for line in lines]
+
+        for cls in id_classes:
+            if classes[cls] in dict_classes:
+                dict_classes[classes[cls]] += 1
+            else:
+                dict_classes[classes[cls]] = 1
+
+    ##with open('pickles/dict_gt.pkl', 'wb') as gt_pkl:
+     #   pickle.dump(dict_classes, gt_pkl)
+
+    return dict_classes

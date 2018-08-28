@@ -22,7 +22,7 @@ def mainParser():
 
 def check_resolutions(imgs_path):
 
-    file_resolutions = open('files_check/resolution.txt', 'w')
+    #file_resolutions = open('files_check/resolution.txt', 'w')
 
     #load classes autel
     classes = load_classes('data/autel.resolutions')
@@ -32,10 +32,10 @@ def check_resolutions(imgs_path):
     dict_res_videos = {k: [] for k in dict_videos}
 
     #load images
-    img_files = sorted(glob.glob('%s/*.jpg' % imgs_path))
+    img_files = sorted(glob.glob('%s**/*.jpg' % imgs_path))
 
     #load labels
-    label_files = sorted(glob.glob('%s/*.xml' % imgs_path))
+    label_files = sorted(glob.glob('%s**/*.xml' % imgs_path))
 
     #img with bad resolution frames
     folder_id = imgs_path.split('/')[-2]
@@ -82,7 +82,7 @@ def histogram_resolutions_img(dict_res_img = None):
 
 
     if dict_res_img is None:
-        with open('pickles/dict_res_img_part1_autel.pkl', 'rb') as gt_pkl:
+        with open('pickles/dict_res_img_images.pkl', 'rb') as gt_pkl:
             dict_res_img = pickle.load(gt_pkl)
 
     classes = load_classes('data/autel.resolutions')
@@ -108,7 +108,7 @@ def histogram_resolutions_videos(dict_res_video = None):
 
 
     if dict_res_video is None:
-        with open('pickles/dict_res_videos_part1_autel.pkl', 'rb') as gt_pkl:
+        with open('pickles/dict_res_videos_images.pkl', 'rb') as gt_pkl:
             dict_res_video = pickle.load(gt_pkl)
 
     for key, values in dict_res_video.items():
@@ -170,7 +170,7 @@ def main():
     args = mainParser()
 
     print(args)
-    dict_res_img, dict_res_video = check_resolutions(args.images)
+    #dict_res_img, dict_res_video = check_resolutions(args.images)
 
 
     #histograms
