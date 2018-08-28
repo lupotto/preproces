@@ -79,4 +79,4 @@ if __name__ == '__main__':
     print(args)
 
     create_dev_set(args.labels_path, args.per_cent)
-    check_devset()
+    #check_devset()

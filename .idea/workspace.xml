@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f78ffb5-b5f9-417e-885f-807ab2ee3264" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/check_resolutions.py" beforeDir="false" afterPath="$PROJECT_DIR$/check_resolutions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/resolution_img_08072018.png" beforeDir="false" afterPath="$PROJECT_DIR$/output/resolution_img_08072018.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/development_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/development_set.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,14 +57,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="names" value="11" />
-          <entry key="py" value="9523" />
+          <entry key="py" value="9524" />
           <entry key="resolutions" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="9523" />
+          <entry key="Python" value="9524" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -110,11 +107,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/development_set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
+            <state relative-caret-position="1159">
+              <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1535488939047" expanded="true" signature="2218:2220" ph="..." />
+                <marker date="1535494276080" expanded="true" signature="2218:2220" ph="..." />
               </folding>
             </state>
           </provider>
@@ -256,6 +253,11 @@
               <item name="preprocess" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocess" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="preprocess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="preprocess" type="462c0819:PsiDirectoryNode" />
+              <item name="pickles" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -301,13 +303,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2642344" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -479,11 +480,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/development_set.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
+        <state relative-caret-position="1159">
+          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1535488939047" expanded="true" signature="2218:2220" ph="..." />
+            <marker date="1535494276080" expanded="true" signature="2218:2220" ph="..." />
           </folding>
         </state>
       </provider>

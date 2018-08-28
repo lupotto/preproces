@@ -257,7 +257,7 @@ def count_classes(list_labels, classes):
             else:
                 dict_classes[classes[cls]] = 1
 
-    ##with open('pickles/dict_gt.pkl', 'wb') as gt_pkl:
-     #   pickle.dump(dict_classes, gt_pkl)
+    with open('pickles/dict_gt.pkl', 'wb') as gt_pkl:
+        pickle.dump(dict_classes, gt_pkl)
 
     return dict_classes
