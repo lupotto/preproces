@@ -24,9 +24,12 @@ def file_path_images(labels_path):
     file_paths = open(os.path.join(os.path.dirname(labels_path.rstrip('/')), 'autel.txt'), 'w')
     #load labels
     label_files = sorted(glob.glob('%s/*.txt' % labels_path))
+    #label id
+    label_id = labels_path.rstrip('/').split('/')[-1]
 
     for label in label_files:
-        img_path = label.replace('labels_voc','images').replace('.txt','.jpg')
+        
+        img_path = label.replace(label_id,'images').replace('.txt','.jpg')
         file_paths.write(img_path + '\n')
 
 if __name__ == '__main__':
